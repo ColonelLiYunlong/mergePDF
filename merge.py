@@ -22,7 +22,7 @@ def merge_odd_even(odd, even, output_file):
     even_pages = even_input.getNumPages()
     num_pages = odd_pages * 2
     if odd_pages == even_pages:
-        print(f'The number of pages is {num_pages}')
+        print(f'The number of pages is {num_pages}.')
         for i in range(odd_pages):
             pdf_output.addPage(odd_input.getPage(i))
             pdf_output.addPage(even_input.getPage(i))
