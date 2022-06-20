@@ -2,25 +2,27 @@
 from PyPDF2 import PdfFileReader, PdfFileWriter
 
 
-def merge_odd_even(odd, even, outfn):
+def merge_odd_even(odd, even, output_filename):
     pdf_output = PdfFileWriter()
     odd_input = PdfFileReader(open(odd, 'rb'))
     even_input = PdfFileReader(open(even, 'rb'))
-    odd_page = odd_input.getNumPages()
-    even_page = even_input.getNumPages()
-    if odd_page == even_page:
-        print('The number of pages is {}'.format(odd_page*2))
-        for i in range(odd_page):
+    odd_pages = odd_input.getNumPages()
+    even_pages = even_input.getNumPages()
+    num_pages = odd_pages * 2
+    if odd_pages == even_pages:
+        print(f'The number of pages is {num_pages}')
+        for i in range(odd_pages):
             pdf_output.addPage(odd_input.getPage(i))
             pdf_output.addPage(even_input.getPage(i))
-        pdf_output.write(open(outfn, 'wb'))
+        pdf_output.write(open(output_filename, 'wb'))
     else:
-        print('Check page number')
+        print('Check page number: Odd pages unequal to even pages')
 
 
 if __name__ == '__main__':
     odd = 'odd.pdf'
     even = 'even.pdf'
-    filename = input('Input file name:')
-    outfn = filename + '.pdf'
-    merge_odd_even(odd, even, outfn)
+    filename = input(
+        'Input file name for merged document (without .pdf): ')
+    output_filename = filename + '.pdf'
+    merge_odd_even(odd, even, output_filename)
