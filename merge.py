@@ -10,7 +10,7 @@ def merge_odd_even(odd, even, outfn):
         print('The number of pages is {}'.format(odd_page*2))
         for i in range(odd_page):
             pdf_output.addPage(odd_input.getPage(i))
-            pdf_output.addPage(even_input.getPage(-(i+1)))
+            pdf_output.addPage(even_input.getPage(i))
     else:
         print('Check page number')
     pdf_output.write(open(outfn, 'wb'))
