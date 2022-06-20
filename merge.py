@@ -22,7 +22,6 @@ def merge_odd_even(odd, even, output_filename):
 if __name__ == '__main__':
     odd = 'odd.pdf'
     even = 'even.pdf'
-    filename = input(
-        'Input file name for merged document (without .pdf): ')
-    output_filename = filename + '.pdf'
+    filename = 'merged.pdf'
+    output_filename = filename
     merge_odd_even(odd, even, output_filename)
